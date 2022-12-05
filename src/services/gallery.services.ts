@@ -4,7 +4,7 @@ import fs from 'fs'
 import cloudinary from 'cloudinary'
 import {responseServer} from '../interface/interfaces'
 import {Gallery} from '../DataBase/connection'
-import { readdir } from 'node:fs/promises'
+import fsPromise from 'node:fs/promises'
 
 export const serviceUploadFile = async(title:string | null,user:number):Promise<responseServer>=>{
 
@@ -14,7 +14,7 @@ export const serviceUploadFile = async(title:string | null,user:number):Promise<
         overwrite: true,
       };
 try {
-    const archivos = await readdir(app.get('dirnameUpload')+"/uploads")
+    const archivos = await fsPromise.readdir(app.get('dirnameUpload')+"/uploads")
     const result:cloudinary.UploadApiResponse[] = await Promise.all(archivos.map(files=> cloudinary.v2.uploader.upload(`${app.get("dirnameUpload")}/uploads/${files}`,options)))
    const s = await Promise.all(result.map(e=>Gallery.create({
         title: title,
