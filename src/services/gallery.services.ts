@@ -4,7 +4,7 @@ import fs from 'fs'
 import cloudinary from 'cloudinary'
 import {responseServer} from '../interface/interfaces'
 import {Gallery} from '../DataBase/connection'
-import fsPromise from 'node:fs/promises'
+import fsPromise from 'fs/promises'
 
 export const serviceUploadFile = async(title:string | null,user:number):Promise<responseServer>=>{
 

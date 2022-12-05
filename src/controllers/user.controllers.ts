@@ -3,7 +3,7 @@ import {serviceSignUp,serviceSigIn} from '../services/user.services'
 import {verifyPropsUser} from '../ServicesComprobation/userpropVerify'
 import {User} from '../DataBase/connection'
 import app from '../app'
-import { readdir } from 'node:fs/promises'
+import fsPromise from 'fs/promises'
 import cloudinary from 'cloudinary'
 import fs from 'fs'
 
@@ -37,7 +37,7 @@ export const postUserImg = async(req:Request, res:Response)=>{
         overwrite: true,
       };
 try {
-    const archivos = await readdir(app.get('dirnameUpload')+"/uploads")
+    const archivos = await fsPromise.readdir(app.get('dirnameUpload')+"/uploads")
     // console.log("estos son los archivos",archivos)
     // const result:cloudinary.UploadApiResponse[] = await Promise.all(archivos.map(files=> cloudinary.v2.uploader.upload(`${app.get("dirnameUpload")}/uploads/${files}`,options)))
     const result:cloudinary.UploadApiResponse = await cloudinary.v2.uploader.upload(`${app.get("dirnameUpload")}/uploads/${archivos[0]}`,options)
