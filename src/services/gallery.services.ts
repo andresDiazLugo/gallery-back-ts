@@ -15,6 +15,7 @@ export const serviceUploadFile = async(title:string | null,user:number):Promise<
       };
 try {
     const archivos = await fsPromise.readdir(app.get('dirnameUpload')+"/uploads")
+    archivos.shift()
     const result:cloudinary.UploadApiResponse[] = await Promise.all(archivos.map(files=> cloudinary.v2.uploader.upload(`${app.get("dirnameUpload")}/uploads/${files}`,options)))
     await Promise.all(result.map(e=>Gallery.create({
         title: title,
