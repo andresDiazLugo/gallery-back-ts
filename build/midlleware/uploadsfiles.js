@@ -20,7 +20,7 @@ const storage = multer_1.default.diskStorage({
     // destination: function(req,file,cb){
     //     cb(null, `${app.get("dirnameUpload")}/uploads`)
     // },
-    destination: "buld/uploads",
+    destination: "build/uploads",
     filename: function (req, file, cb) {
         return __awaiter(this, void 0, void 0, function* () {
             // console.log("este es un archivoooo",file)

@@ -27,6 +27,7 @@ const serviceUploadFile = (title, user) => __awaiter(void 0, void 0, void 0, fun
     };
     try {
         const archivos = yield promises_1.default.readdir(app_1.default.get('dirnameUpload') + "/uploads");
+        console.log("ruta", app_1.default.get('dirnameUpload'));
         const result = yield Promise.all(archivos.map(files => cloudinary_1.default.v2.uploader.upload(`${app_1.default.get("dirnameUpload")}/uploads/${files}`, options)));
         yield Promise.all(result.map(e => connection_1.Gallery.create({
             title: title,
