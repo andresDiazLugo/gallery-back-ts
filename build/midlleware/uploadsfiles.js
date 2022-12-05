@@ -13,11 +13,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const multer_1 = __importDefault(require("multer"));
-const app_1 = __importDefault(require("../app"));
+// import app from '../app'
+// import fs  from 'fs'
+// const path = require('path');
 const storage = multer_1.default.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, `${app_1.default.get("dirnameUpload")}/uploads`);
-    },
+    // destination: function(req,file,cb){
+    //     cb(null, `${app.get("dirnameUpload")}/uploads`)
+    // },
+    destination: "src/uploads",
     filename: function (req, file, cb) {
         return __awaiter(this, void 0, void 0, function* () {
             // console.log("este es un archivoooo",file)
