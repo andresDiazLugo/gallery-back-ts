@@ -9,9 +9,10 @@ const app:Application = express()
 
 
 //configuraciones de server
+app.set("saludo","hola andres")
 app.set("PORT",4000 || config.PORT)
 app.set("dirnameUpload",__dirname)
-// console.log(app.get("dirnameUpload"))
+
 //middlewares
 app.use(cors())
 app.use(express.json())

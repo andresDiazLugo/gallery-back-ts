@@ -11,9 +11,9 @@ const user_routes_1 = __importDefault(require("./routes/user.routes"));
 const gallery_routes_1 = __importDefault(require("./routes/gallery.routes"));
 const app = (0, express_1.default)();
 //configuraciones de server
+app.set("saludo", "hola andres");
 app.set("PORT", 4000 || config_1.config.PORT);
 app.set("dirnameUpload", __dirname);
-// console.log(app.get("dirnameUpload"))
 //middlewares
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
