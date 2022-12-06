@@ -15,5 +15,5 @@ cloudinary.v2.config({
     secure: true
 })   
     console.log("server runing in the port ",app.get("PORT"))
-   sequelize.sync({force: false})
+   sequelize.sync({force: true})
 })

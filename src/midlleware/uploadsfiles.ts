@@ -7,11 +7,13 @@ const storage = multer.diskStorage({
     },
     
     filename: async function(req,file, cb){
-        // console.log("este es un archivoooo",file)
-          const a = file.mimetype.split("/")[1]
+        console.log("este es un archivoooo",file)
+          // const name = file.mimetype.split("/")[1]
+          const name = file.originalname
+
         //   console.log("archivos",file)
-          const namefile = String(Math.random()*2).split(".").join("")+"."+a
-          cb(null,namefile)
+          // const namefile = String(Math.random()*2).split(".").join("")+"."+a
+          cb(null,name)
     }
 })
  const upload = multer({storage})

@@ -28,15 +28,17 @@ export const getAllImages = async(req:Request, res:Response)=>{
 
 
 export const deleteImage = async(req:Request,res:Response)=>{
+    console.log("parametro",req.params)
     try {
         const {idCloud} =req.params    
         console.log("id de imagen", idCloud)
         const response = Gallery.destroy({
             where:{
-               id:idCloud 
+               idCloudinary:idCloud 
             }
         })
-        const {result}= await cloudinary.v2.uploader.destroy(idCloud)
+        const {result} = await  cloudinary.v2.uploader.destroy(idCloud)
+        console.log("resultado de cloudinary",result)
         if(!response && result !== "ok"){
             res.status(201).json({
                 msg: "no se encuentra el registro que desea eliminar"
