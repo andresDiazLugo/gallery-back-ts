@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
+const path_1 = __importDefault(require("path"));
 const config_1 = require("./config/config");
 const user_routes_1 = __importDefault(require("./routes/user.routes"));
 const gallery_routes_1 = __importDefault(require("./routes/gallery.routes"));
@@ -13,7 +14,7 @@ const app = (0, express_1.default)();
 //configuraciones de server
 app.set("saludo", "hola andres");
 app.set("PORT", 4000 || config_1.config.PORT);
-app.set("dirnameUpload", __dirname);
+app.set("dirnameUpload", path_1.default.join(__dirname));
 //middlewares
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());

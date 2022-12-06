@@ -1,5 +1,4 @@
 "use strict";
-/////prueba/////
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -16,8 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const connection_1 = require("./DataBase/connection");
 const app_1 = __importDefault(require("./app"));
 const cloudinary_1 = __importDefault(require("cloudinary"));
+const path_1 = __importDefault(require("path"));
+const fs_1 = __importDefault(require("fs"));
 //mounted server
 app_1.default.listen(app_1.default.get("PORT"), () => __awaiter(void 0, void 0, void 0, function* () {
+    fs_1.default.mkdir(path_1.default.join(__dirname, 'uploads'), () => {
+        console.log('Directory created successfully!');
+    });
     cloudinary_1.default.v2.config({
         secure: true
     });
