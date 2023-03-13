@@ -26,5 +26,5 @@ app_1.default.listen(app_1.default.get("PORT"), () => __awaiter(void 0, void 0, 
         secure: true
     });
     console.log("server runing in the port ", app_1.default.get("PORT"));
-    connection_1.sequelize.sync({ force: true });
+    connection_1.sequelize.sync({ force: false });
 }));
